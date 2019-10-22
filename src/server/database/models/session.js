@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    typeID: {
+    typeId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     }
