@@ -1,9 +1,17 @@
+// SETUP
 const express = require('express');
-const os = require('os');
 
 const app = express();
+const PORT = process.env.PORT || 8080;
 
-app.use(express.static('dist'));
-app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
+// MIDDLEWARE
+app.use(express.json());
 
-app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
+// IMPORT ROUTES
+const apiRoutes = require('./routes/api');
+
+app.use('/api', apiRoutes);
+app.get('/', (req, res) => res.status(200).send({ message: 'Welcome.' }));
+
+// LISTEN TO SERVER
+app.listen(PORT, () => console.log(`~~~ Listening on port ${PORT}! ~~~`));
