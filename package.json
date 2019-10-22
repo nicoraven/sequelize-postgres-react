@@ -5,10 +5,13 @@
   "main": "src/server/index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "npm run build && node src/server/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+    "db:migrate": "node_modules/.bin/sequelize db:migrate",
+    "db:reset": "node_modules/.bin/sequelize db:migrate:undo:all && node_modules/.bin/sequelize db:migrate",
+    "db:seed": "node_modules/.bin/sequelize db:seed:all",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon src/server/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "npm run build && node src/server/index.js"
   },
   "author": "nicoraven",
   "license": "ISC",
