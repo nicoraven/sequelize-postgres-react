@@ -1,7 +1,13 @@
 const { Session } = require('../database/models');
 
 const createSession = (req, res) => {
-  res.status(200).send(req.body);
+  console.log(req.body);
+  Session.create(req.body)
+    .then(session => res.status(200).send(session))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({ message: 'Internal Server Error' });
+    });
 };
 
 const getSessions = (req, res) => {
