@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Classroom.hasMany(models.Session, {
       foreignKey: 'classroomId',
-      as: 'classroom',
+      as: 'sessions',
       onDelete: 'CASCADE',
     });
   };

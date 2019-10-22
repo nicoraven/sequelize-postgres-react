@@ -1,4 +1,4 @@
-const { Session } = require('../database/models');
+const { Session, Classroom, Type, Recurrence } = require('../database/models');
 
 const createSession = (req, res) => {
   console.log(req.body);
@@ -11,11 +11,26 @@ const createSession = (req, res) => {
 };
 
 const getSessions = (req, res) => {
-  Session.findAll()
+  Session.findAll({
+    include: [
+      {
+        model: Classroom,
+        as: 'classroom'
+      },
+      {
+        model: Type,
+        as: 'type'
+      },
+      {
+        model: Recurrence,
+        as: 'recurrence'
+      }
+    ]
+  })
     .then((data) => {
       if (data.length > 0) {
-        console.log(data.get({ plain: true }));
-        res.status(200).send(data.get({ plain: true }));
+        console.log(data);
+        res.status(200).send(data);
       } else {
         res.status(400).send({ message: 'no entries found!' });
       }

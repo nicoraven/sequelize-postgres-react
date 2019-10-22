@@ -22,19 +22,19 @@ module.exports = (sequelize, DataTypes) => {
   // eslint-disable-next-line func-names
   Session.associate = function (models) {
     // associations can be defined here
-    Session.hasOne(models.Classroom, {
+    Session.belongsTo(models.Classroom, {
       foreignKey: 'classroomId',
       as: 'classroom',
       onDelete: 'CASCADE',
     });
-    Session.hasOne(models.Recurrence, {
-      foreignKey: 'recurrenceId',
-      as: 'recurrence',
-      onDelete: 'CASCADE',
-    });
-    Session.hasOne(models.Type, {
+    Session.belongsTo(models.Type, {
       foreignKey: 'typeId',
       as: 'type',
+      onDelete: 'CASCADE',
+    });
+    Session.belongsTo(models.Recurrence, {
+      foreignKey: 'recurrenceId',
+      as: 'recurrence',
       onDelete: 'CASCADE',
     });
   };
