@@ -1,4 +1,5 @@
 const sessions = require('./sessionsController');
+const classrooms = require('./classroomsController');
 
 const landingMessage = (req, res) => {
   res.status(200).send({ message: 'Get all sessions.' });
@@ -6,5 +7,6 @@ const landingMessage = (req, res) => {
 
 module.exports = {
   landingMessage,
-  sessions
+  sessions,
+  classrooms
 };

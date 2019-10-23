@@ -14,18 +14,17 @@ const getSessions = (req, res) => {
   Session.findAll({
     include: [
       {
-        model: Classroom,
-        as: 'classroom'
-      },
-      {
         model: Type,
-        as: 'type'
+        as: 'type',
+        attributes: ['name', 'id']
       },
       {
         model: Recurrence,
-        as: 'recurrence'
+        as: 'recurrence',
+        attributes: ['name', 'id']
       }
-    ]
+    ],
+    order: ['id']
   })
     .then((data) => {
       if (data.length > 0) {
