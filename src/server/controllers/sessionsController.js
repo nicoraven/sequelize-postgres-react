@@ -29,7 +29,7 @@ const getSessions = (req, res) => {
   })
     .then((data) => {
       if (data.length > 0) {
-        console.log(data);
+        // console.log(data);
         res.status(200).send(data);
       } else {
         res.status(400).send({ message: 'no entries found!' });

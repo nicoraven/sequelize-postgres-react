@@ -3,10 +3,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Session = sequelize.define('Session', {
     name: DataTypes.STRING,
-    classroomId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     instructor: DataTypes.STRING,
     timeStart: DataTypes.DATE,
     timeEnd: DataTypes.DATE,
@@ -22,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   // eslint-disable-next-line func-names
   Session.associate = function (models) {
     // associations can be defined here
-    Session.belongsTo(models.Classroom, {
-      foreignKey: 'classroomId',
+    Session.hasOne(models.Classroom, {
+      foreignKey: 'id',
       as: 'classroom',
       onDelete: 'CASCADE',
     });

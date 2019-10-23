@@ -12,10 +12,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      classroomId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
       instructor: {
         type: Sequelize.STRING
       },
