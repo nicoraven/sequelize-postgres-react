@@ -12,19 +12,60 @@
 .classroom {
   width: calc(100% / 5);
   box-sizing: border-box;
+  padding-bottom: 20%;
+  position: relative;
 }
 
-.classroom:after {
+.classroom-content {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.classroom-details > p {
+  word-wrap: wrap;
+}
+
+.classroom-icons {
+  position: absolute;
+  bottom: 10px;
+  width: calc(100% - 20px);
+  display: flex;
+}
+
+.icon {
+  width: 25%;
+  padding: 2px;
+  box-sizing: border-box;
+  background-image: url('../images/spritesheet.png');
+  background-size: 100%;
+}
+
+.icon:after {
   content: "";
   display: block;
   padding-bottom: 100%;
 }
 
-.classroom-content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
+#icon-view {
+  background-position: 0% 100%;
+}
+
+#icon-set {
+  background-position: 0% 75%;
+}
+
+#icon-clear {
+  background-position: 0% 25%;
+}
+
+#icon-settings {
+  background-position: 0% 50%;
 }
 
 h2 {
