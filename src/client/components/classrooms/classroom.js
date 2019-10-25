@@ -2,19 +2,12 @@
 import React, { useState } from 'react';
 
 import Modal from '../modal/modal';
+import ClassView from './showdetails';
 import './classrooms.css';
 
 const Classroom = ({ room }) => {
   // console.log(room);
   const [show, setShow] = useState(false);
-
-  // showModal = () => {
-  //   this.setState({ show: true });
-  // };
-
-  // hideModal = () => {
-  //   this.setState({ show: false });
-  // };
   const sessionName = room.session ? room.session.name : 'Vacant';
 
   return (
@@ -31,8 +24,7 @@ const Classroom = ({ room }) => {
           <div className="icon" id="icon-settings" alt="settings" />
         </div>
         <Modal show={show} handleClose={() => setShow(false)}>
-          <p>{room.name}</p>
-          <p>Data</p>
+          <ClassView room={room} />
         </Modal>
       </div>
     </div>
