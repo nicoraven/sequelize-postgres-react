@@ -29,21 +29,11 @@ export default class App extends Component {
   render() {
     const { classrooms, sessions } = this.state;
 
-    // return (
-    //   <div className="page-wrapper">
-    //     <ClassroomContainer classrooms={classrooms} />
-    //   </div>
-    // );
-
     return (
-      <Router>
-        <div className="app-wrapper">
-          <h1>Classroom Placards</h1>
-          <Switch>
-            <Route path="/" exact render={() => <ClassroomContainer classrooms={classrooms} />} />
-          </Switch>
-        </div>
-      </Router>
+      <div className="app-wrapper">
+        <h1>Classroom Placards</h1>
+        <ClassroomContainer classrooms={classrooms} />
+      </div>
     );
   }
 }
