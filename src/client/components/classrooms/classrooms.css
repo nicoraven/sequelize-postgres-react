@@ -1,3 +1,7 @@
+:root {
+  --spritesheet: url('../../images/spritesheet.png');
+}
+
 .classrooms-container {
   padding: 20px;
   text-align: left;
@@ -42,7 +46,7 @@
   width: 25%;
   padding: 2px;
   box-sizing: border-box;
-  background-image: url('../images/spritesheet.png');
+  background-image: var(--spritesheet);
   background-size: 100%;
 }
 
