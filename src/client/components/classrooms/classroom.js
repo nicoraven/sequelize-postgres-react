@@ -6,25 +6,45 @@ import ClassView from './showdetails';
 import './classrooms.css';
 
 const Classroom = ({ room }) => {
-  // console.log(room);
-  const [show, setShow] = useState(false);
-  const sessionName = room.session ? room.session.name : 'Vacant';
+  console.log(room);
+  const [content, setContent] = useState(null);
+
+  const ModalContent = () => (
+    <React.Fragment>
+      {{
+        ClassView: <ClassView room={room} />,
+        null: null
+      }[content]}
+    </React.Fragment>
+  );
+
+  const sessionDetails = room.session ? (
+    <React.Fragment>
+      <h3>{room.name}</h3>
+      <p>{room.session.name}</p>
+      <p>{new Date(room.session.timeStart).toLocaleTimeString()}  -  {new Date(room.session.timeEnd).toLocaleTimeString()}</p>
+    </React.Fragment>
+  ) : (
+    <React.Fragment>
+      <h3>{room.name}</h3>
+      <p>Vacant</p>
+    </React.Fragment>
+  );
 
   return (
-    <div key={room.id} className="classroom">
-      <div className="classroom-content">
-        <div className="classroom-details">
-          <h3>{room.name}</h3>
-          <p>{sessionName}</p>
+    <div key={room.id} className="card">
+      <div className="card-content">
+        <div className="card-details">
+          {sessionDetails}
         </div>
-        <div className="classroom-icons">
-          <div className="icon" id="icon-view" alt="view" role="button" onClick={() => setShow(true)}/>
+        <div className="card-icons">
+          <div className="icon" id="icon-view" alt="view" role="button" onClick={() => setContent('ClassView')}/>
           <div className="icon" id="icon-set" alt="set" />
           <div className="icon" id="icon-clear" alt="clear" />
           <div className="icon" id="icon-settings" alt="settings" />
         </div>
-        <Modal show={show} handleClose={() => setShow(false)}>
-          <ClassView room={room} />
+        <Modal show={content} handleClose={() => setContent(false)}>
+          {ModalContent()}
         </Modal>
       </div>
     </div>

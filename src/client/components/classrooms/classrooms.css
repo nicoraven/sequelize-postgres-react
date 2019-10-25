@@ -13,14 +13,17 @@
   flex-wrap: wrap;
 }
 
-.classroom {
-  width: calc(100% / 5);
+.card {
+  width: calc(calc(100% - 100px) / 5);
   box-sizing: border-box;
   padding-bottom: 20%;
   position: relative;
+  border: solid 2px #000;
+  border-radius: 10px;
+  margin: 10px;
 }
 
-.classroom-content {
+.card-content {
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0;
   padding: 10px;
@@ -31,20 +34,20 @@
   box-sizing: border-box;
 }
 
-.classroom-details > p {
+.card-details > p {
   word-wrap: wrap;
 }
 
-.classroom-icons {
+.card-icons {
   position: absolute;
   bottom: 10px;
   width: calc(100% - 20px);
   display: flex;
+  justify-content: space-between;
 }
 
 .icon {
-  width: 25%;
-  padding: 2px;
+  width: 20%;
   box-sizing: border-box;
   background-image: var(--spritesheet);
   background-size: 100%;
@@ -73,8 +76,9 @@
 }
 
 h2 {
-  margin: 0 0 0.4em 0;
+  margin: 0;
   font-size: 1.8rem;
+  padding: 10px;
 }
 
 h4 {
