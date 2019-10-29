@@ -2,6 +2,16 @@
   --spritesheet: url('../../images/spritesheet.png');
 }
 
+h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  padding: 10px;
+}
+
+h4 {
+  margin: 0;
+}
+
 .classrooms-container {
   padding: 20px;
   text-align: left;
@@ -75,17 +85,7 @@
   background-position: 0% 50%;
 }
 
-h2 {
-  margin: 0;
-  font-size: 1.8rem;
-  padding: 10px;
-}
-
-h4 {
-  margin: 0;
-}
-
-#dah-bodie {
+.modal-child {
   background: #000;
   color: #fff;
 }

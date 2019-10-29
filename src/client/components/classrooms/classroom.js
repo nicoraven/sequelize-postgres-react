@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 
 import Modal from '../modal/modal';
-import ClassView from './showdetails';
+import ClassView from './ClassView';
+import { generateTime } from '../../utils';
 import './classrooms.css';
 
 const Classroom = ({ room }) => {
-  console.log(room);
+  // console.log(room);
   const [content, setContent] = useState(null);
 
   const ModalContent = () => (
@@ -22,7 +23,7 @@ const Classroom = ({ room }) => {
     <React.Fragment>
       <h3>{room.name}</h3>
       <p>{room.session.name}</p>
-      <p>{new Date(room.session.timeStart).toLocaleTimeString()}  -  {new Date(room.session.timeEnd).toLocaleTimeString()}</p>
+      <p>{generateTime(room.session.timeStart)}  -  {generateTime(room.session.timeEnd)}</p>
     </React.Fragment>
   ) : (
     <React.Fragment>

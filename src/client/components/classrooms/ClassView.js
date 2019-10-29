@@ -18,12 +18,22 @@ const ClassroomDetails = ({ room }) => {
     }
   };
 
-  return (
-    <div id="dah-bodie">
-      {room.name}
-      <button type="button" onClick={e => goFullscreen(e)}>Enter Fullscreen display mode</button>
-    </div>
-  );
+  if (room.session) {
+    return (
+      <div className="modal-child">
+        {room.name}
+        <button id="fullscreen-button" type="button" onClick={e => goFullscreen(e)}>Fullscreen</button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="modal-child">
+        {room.name}
+        <p>Vacant</p>
+        <button id="fullscreen-button" type="button" onClick={e => goFullscreen(e)}>Fullscreen</button>
+      </div>
+    );
+  }
 };
 
 export default ClassroomDetails;
