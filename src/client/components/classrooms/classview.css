@@ -1,15 +1,66 @@
-h1 {
+.session-name {
+  font-size: 5em;
+  white-space: normal;
+}
+
+.session-details {
   font-size: 3.5em;
+  white-space: normal;
+  margin: 0;
+  padding: 0.1em;
 }
 
 .modal-child {
   background: #000;
   color: #fff;
-  padding: 30px;
+  padding: 10%;
+  position: relative;
 }
 
 .line {
+  border: solid 5px #fff;
+  width: 40%;
+  margin: 3em 0;
+}
+
+#fullscreen-button {
+  border: none;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0px;
+  right: 0px;
+  background-color: rgba(0,0,0,0);
+  color: rgba(0,0,0,0);
+}
+
+#fullscreen-button:hover {
+  color: #fff;
   border: solid 2px #fff;
-  width: 30%;
-  margin: 20px 0;
+}
+
+.fullscreen h1 {
+  font-size: 10vw;
+}
+
+.fullscreen .session-details {
+  font-size: 6vw;
+}
+
+@media only screen and (max-width: 1000px){
+  .session-name {
+    font-size: 3em;
+  }
+  
+  .session-details {
+    font-size: 2em;
+  }
+
+  .fullscreen h1 {
+    font-size: 6vw;
+  }
+  
+  .fullscreen .session-details {
+    font-size: 4.5vw;
+  }
 }

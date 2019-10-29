@@ -18,9 +18,6 @@ h4 {
 }
 
 .list-wrapper {
-  /* display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap; */
   overflow: auto;
   white-space: nowrap;
 }
@@ -50,13 +47,22 @@ h4 {
   box-sizing: border-box;
 }
 
+.card-details > h3 {
+  /* word-wrap: wrap; */
+  white-space: normal;
+  font-size: 2em;
+  margin: 0;
+}
+
 .card-details > p {
-  word-wrap: wrap;
+  /* word-wrap: wrap; */
+  white-space: normal;
+  font-size: 1.4em;
 }
 
 .card-icons {
-  position: absolute;
-  bottom: 10px;
+  position: relative;
+  /* bottom: 10px; */
   width: calc(100% - 20px);
   display: flex;
   justify-content: space-between;
@@ -89,4 +95,32 @@ h4 {
 
 #icon-settings {
   background-position: 0% 50%;
+}
+
+@media only screen and (max-width: 800px) {
+  .list-wrapper {
+    /* height: 300px; */
+    /* overflow-x: hidden;
+    overflow-y: scroll; */
+  }
+
+  .card {
+    width: calc(calc(100% - 60px) / 2);
+  }
+
+  .card:after {
+    content: "";
+    display: block;
+    padding-bottom: 30%;
+  }
+}
+
+@media only screen and (min-width: 1501px) {
+  .card-details > h3 {
+    font-size: 2.8em;
+  }
+  
+  .card-details > p {
+    font-size: 2em;
+  }
 }
