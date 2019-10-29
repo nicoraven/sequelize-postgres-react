@@ -18,19 +18,25 @@ h4 {
 }
 
 .list-wrapper {
-  display: flex;
+  /* display: flex;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
+  overflow: auto;
+  white-space: nowrap;
 }
 
 .card {
-  width: calc(calc(100% - 100px) / 5);
+  width: calc(calc(100% - 100px) / 3);
   box-sizing: border-box;
-  padding-bottom: 20%;
+  padding-bottom: 30%;
   position: relative;
   border: solid 2px #000;
   border-radius: 10px;
   margin: 10px;
+
+  display: inline-block;
+  /* text-align: center; */
+  text-decoration: none;
 }
 
 .card-content {
@@ -83,9 +89,4 @@ h4 {
 
 #icon-settings {
   background-position: 0% 50%;
-}
-
-.modal-child {
-  background: #000;
-  color: #fff;
 }

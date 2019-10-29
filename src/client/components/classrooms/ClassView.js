@@ -2,7 +2,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import './classrooms.css';
+import { generateTime } from '../../utils';
+import './classview.css';
 
 const ClassroomDetails = ({ room }) => {
   const goFullscreen = (e) => {
@@ -21,14 +22,18 @@ const ClassroomDetails = ({ room }) => {
   if (room.session) {
     return (
       <div className="modal-child">
-        {room.name}
+        <h1>{room.session.name}</h1>
+        <div className="line" />
+        <h2>{room.name.toUpperCase()}</h2>
+        <h2>{room.session.instructor}</h2>
+        <h2>{generateTime(room.session.timeStart)}  -  {generateTime(room.session.timeEnd)}</h2>
         <button id="fullscreen-button" type="button" onClick={e => goFullscreen(e)}>Fullscreen</button>
       </div>
     );
   } else {
     return (
       <div className="modal-child">
-        {room.name}
+        <h2>{room.name.toUpperCase()}</h2>
         <p>Vacant</p>
         <button id="fullscreen-button" type="button" onClick={e => goFullscreen(e)}>Fullscreen</button>
       </div>
