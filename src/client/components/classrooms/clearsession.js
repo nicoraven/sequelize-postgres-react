@@ -1,12 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import { ModalConsumer } from '../../utils/modalcontext';
+import { ModalConsumer, requestClear } from '../../utils';
 import './clearsession.css';
 
 const ClearSession = ({ room }) => {
-  const clearReq = () => {
-    console.log('send req!');
+  const clearReq = async (handleClose) => {
+    const cleared = await requestClear(parseInt(room.id));
+    if (cleared) {
+      handleClose();
+    } else {
+      alert('Error: Please try again later.');
+    }
   };
 
   if (room.session) {
@@ -15,8 +20,7 @@ const ClearSession = ({ room }) => {
         <p className="clearsession-details">Are you sure you want to clear {room.session.name}?</p>
         <div className="confirmation-buttons">
           <ModalConsumer>
-            {/* {f => <p>{f}</p>} */}
-            {f => <button type="button" onClick={() => { clearReq(); f(); }}>Confirm</button>}
+            {handleClose => <button type="button" onClick={() => { clearReq(handleClose); }}>Confirm</button>}
           </ModalConsumer>
         </div>
       </div>

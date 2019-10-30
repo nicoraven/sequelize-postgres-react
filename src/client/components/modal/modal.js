@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import { ModalProvider } from '../../utils/modalcontext';
+import { ModalProvider } from '../../utils';
 import './modal.css';
 
 const Modal = ({ handleClose, show, children }) => {

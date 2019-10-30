@@ -6,10 +6,11 @@
     "node": true
   },
   "rules": {
-    "no-console": "off",
     "comma-dangle": "off",
-    "react/jsx-filename-extension": "off",
+    "no-console": "off",
+    "no-else-return": "off",
     "radix": ["error", "as-needed"],
-    "no-else-return": "off"
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off"
   }
 }

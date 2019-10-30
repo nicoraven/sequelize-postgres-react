@@ -35,7 +35,7 @@ const Classroom = ({ room }) => {
   );
 
   return (
-    <div key={room.id} className="card">
+    <div className="card">
       <div className="card-content">
         <div className="card-details">
           {sessionDetails}
