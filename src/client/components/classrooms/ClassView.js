@@ -23,7 +23,7 @@ const ClassroomDetails = ({ room }) => {
 
   if (room.session) {
     return (
-      <div className="modal-child">
+      <div className="classview-child">
         <h1 className="session-name">{room.session.name}</h1>
         <div className="line" />
         <h2 className="session-details">{room.name.toUpperCase()}</h2>
@@ -34,8 +34,9 @@ const ClassroomDetails = ({ room }) => {
     );
   } else {
     return (
-      <div className="modal-child">
+      <div className="classview-child">
         <h1 className="session-name">Vacant</h1>
+        <div className="line" />
         <h2 className="session-details">{room.name.toUpperCase()}</h2>
         <button id="fullscreen-button" type="button" onClick={e => goFullscreen(e)}>Fullscreen</button>
       </div>

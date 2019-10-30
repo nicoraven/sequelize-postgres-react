@@ -97,7 +97,7 @@ h4 {
   background-position: 0% 50%;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
   .list-wrapper {
     /* height: 300px; */
     /* overflow-x: hidden;

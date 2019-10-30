@@ -61,9 +61,30 @@ const setSession = (req, res) => {
     });
 };
 
+const clearSession = (req, res) => {
+  Classroom.update(
+    { sessionId: null },
+    { returning: true, where: { id: parseInt(req.params.id) } }
+  )
+    .then(([rowsUpdate, [data]]) => {
+      console.log('updated', rowsUpdate);
+      console.log(data);
+      if (data) {
+        res.status(200).send(data);
+      } else {
+        res.status(400).send({ message: 'no entries found!' });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({ message: 'Internal Server Error' });
+    });
+};
+
 module.exports = {
   createClassroom,
   getClassrooms,
   findClassroom,
-  setSession
+  setSession,
+  clearSession
 };

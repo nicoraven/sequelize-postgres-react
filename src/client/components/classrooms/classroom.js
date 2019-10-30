@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import Modal from '../modal/modal';
 import ClassView from './ClassView';
+import ClearSession from './clearsession';
 import { generateTime } from '../../utils';
 import './classrooms.css';
 
@@ -14,6 +15,7 @@ const Classroom = ({ room }) => {
     <React.Fragment>
       {{
         ClassView: <ClassView room={room} />,
+        ClearSession: <ClearSession room={room} />,
         null: null
       }[content]}
     </React.Fragment>
@@ -41,7 +43,7 @@ const Classroom = ({ room }) => {
         <div className="card-icons">
           <div className="icon" id="icon-view" alt="view" role="button" onClick={() => setContent('ClassView')}/>
           <div className="icon" id="icon-set" alt="set" />
-          <div className="icon" id="icon-clear" alt="clear" />
+          <div className="icon" id="icon-clear" alt="clear" role="button" onClick={() => setContent('ClearSession')}/>
           <div className="icon" id="icon-settings" alt="settings" />
         </div>
         <Modal show={content} handleClose={() => setContent(false)}>
