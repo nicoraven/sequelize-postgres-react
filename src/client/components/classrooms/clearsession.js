@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import { ModalConsumer, requestClear } from '../../utils';
+import { Consumer as DataConsumer, requestClear } from '../../utils';
 import './clearsession.css';
 
 const ClearSession = ({ room }) => {
@@ -19,9 +19,9 @@ const ClearSession = ({ room }) => {
       <div className="clearsession-child">
         <p className="clearsession-details">Are you sure you want to clear {room.session.name}?</p>
         <div className="confirmation-buttons">
-          <ModalConsumer>
-            {handleClose => <button type="button" onClick={() => { clearReq(handleClose); }}>Confirm</button>}
-          </ModalConsumer>
+          <DataConsumer>
+            {handleClose => <button type="button" onClick={() => { clearReq(handleClose); console.log(handleClose); }}>Confirm</button>}
+          </DataConsumer>
         </div>
       </div>
     );

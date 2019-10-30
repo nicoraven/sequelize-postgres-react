@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import { ModalProvider } from '../../utils';
+import { Provider as DataProvider } from '../../utils';
 import './modal.css';
 
 const Modal = ({ handleClose, show, children }) => {
@@ -11,9 +11,9 @@ const Modal = ({ handleClose, show, children }) => {
     <div className={showHideClassName}>
       <section className="modal-main">
         <button className="modal-button" type="button" onClick={handleClose}>X</button>
-        <ModalProvider value={handleClose}>
+        <DataProvider value={handleClose}>
           {children}
-        </ModalProvider>
+        </DataProvider>
       </section>
     </div>
   );

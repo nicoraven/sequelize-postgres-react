@@ -1,9 +1,6 @@
-import React from 'react';
+import { createContext } from 'react';
 
-const ModalContext = React.createContext({});
-
-const ModalProvider = ModalContext.Provider;
-const ModalConsumer = ModalContext.Consumer;
+const { Provider, Consumer } = createContext();
 
 const generateTime = dateObj => new Date(dateObj).toLocaleTimeString([], { hour12: true, hour: 'numeric', minute: '2-digit' }).toUpperCase();
 
@@ -25,14 +22,6 @@ const requestClear = async (id) => {
       console.log('Response:', json);
       return json;
     }
-    // const json = await response.json();
-    // if (JSON.stringify(json).message) {
-    //   console.log('Error Response:', JSON.stringify(json).message);
-    //   return null;
-    // } else {
-    //   console.log('Response:', JSON.parse(json));
-    //   return JSON.stringify(json);
-    // }
   } catch (error) {
     console.error('Error:', error);
     return null;
@@ -42,6 +31,6 @@ const requestClear = async (id) => {
 export {
   generateTime,
   requestClear,
-  ModalConsumer,
-  ModalProvider,
+  Provider,
+  Consumer
 };
