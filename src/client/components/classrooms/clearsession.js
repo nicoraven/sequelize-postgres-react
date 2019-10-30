@@ -1,14 +1,27 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import { Consumer as DataConsumer, requestClear } from '../../utils';
+import { requestClear } from '../../utils';
+import { ClassroomsContext, SetContentContext } from '../../utils/context';
 import './clearsession.css';
 
+const CombinedContextConsumer = ({ children }) => (
+  <ClassroomsContext.Consumer>
+    {updateClassroom => (
+      <SetContentContext.Consumer>{setContent => (
+        children({ updateClassroom, setContent })
+      )}
+      </SetContentContext.Consumer>
+    )}
+  </ClassroomsContext.Consumer>
+);
+
 const ClearSession = ({ room }) => {
-  const clearReq = async (handleClose) => {
+  const clearReq = async ({ updateClassroom, setContent }) => {
     const cleared = await requestClear(parseInt(room.id));
     if (cleared) {
-      handleClose();
+      updateClassroom(cleared);
+      setContent();
     } else {
       alert('Error: Please try again later.');
     }
@@ -19,9 +32,9 @@ const ClearSession = ({ room }) => {
       <div className="clearsession-child">
         <p className="clearsession-details">Are you sure you want to clear {room.session.name}?</p>
         <div className="confirmation-buttons">
-          <DataConsumer>
-            {handleClose => <button type="button" onClick={() => { clearReq(handleClose); console.log(handleClose); }}>Confirm</button>}
-          </DataConsumer>
+          <CombinedContextConsumer>
+            {({ updateClassroom, setContent }) => <button type="button" onClick={() => { clearReq({ updateClassroom, setContent }); }}>Confirm</button>}
+          </CombinedContextConsumer>
         </div>
       </div>
     );

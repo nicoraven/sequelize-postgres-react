@@ -68,7 +68,7 @@ const clearSession = (req, res) => {
   )
     .then(([rowsUpdate, [data]]) => {
       console.log('updated', rowsUpdate);
-      console.log(data);
+      // console.log(data);
       if (data) {
         res.status(200).send(data);
       } else {

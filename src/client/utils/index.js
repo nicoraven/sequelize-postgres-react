@@ -1,7 +1,3 @@
-import { createContext } from 'react';
-
-const { Provider, Consumer } = createContext();
-
 const generateTime = dateObj => new Date(dateObj).toLocaleTimeString([], { hour12: true, hour: 'numeric', minute: '2-digit' }).toUpperCase();
 
 const requestClear = async (id) => {
@@ -30,7 +26,5 @@ const requestClear = async (id) => {
 
 export {
   generateTime,
-  requestClear,
-  Provider,
-  Consumer
+  requestClear
 };

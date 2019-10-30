@@ -5,6 +5,7 @@ import Modal from '../modal/modal';
 import ClassView from './ClassView';
 import ClearSession from './clearsession';
 import { generateTime } from '../../utils';
+import { SetContentContext } from '../../utils/context';
 import './classrooms.css';
 
 const Classroom = ({ room }) => {
@@ -47,7 +48,9 @@ const Classroom = ({ room }) => {
           <div className="icon" id="icon-settings" alt="settings" />
         </div>
         <Modal show={content} handleClose={() => setContent(false)}>
-          {ModalContent()}
+          <SetContentContext.Provider value={() => setContent(false)}>
+            {ModalContent()}
+          </SetContentContext.Provider>
         </Modal>
       </div>
     </div>
