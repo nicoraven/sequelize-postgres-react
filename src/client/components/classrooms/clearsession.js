@@ -5,13 +5,19 @@ import { ModalConsumer } from '../../utils/modalcontext';
 import './clearsession.css';
 
 const ClearSession = ({ room }) => {
+  const clearReq = () => {
+    console.log('send req!');
+  };
+
   if (room.session) {
     return (
       <div className="clearsession-child">
         <p className="clearsession-details">Are you sure you want to clear {room.session.name}?</p>
-        <ModalConsumer>{context => <p>{context}</p>}</ModalConsumer>
         <div className="confirmation-buttons">
-          <button type="button">Confirm</button>
+          <ModalConsumer>
+            {/* {f => <p>{f}</p>} */}
+            {f => <button type="button" onClick={() => { clearReq(); f(); }}>Confirm</button>}
+          </ModalConsumer>
         </div>
       </div>
     );
