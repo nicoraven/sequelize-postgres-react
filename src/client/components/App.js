@@ -1,38 +1,27 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './app.css';
 
 import ClassroomContainer from './classrooms/classroomscontainer';
 
-export default class App extends Component {
-  state = {
-    sessions: [],
-    classrooms: []
+const App = () => {
+  const [classrooms, setClassrooms] = useState([]);
+
+  const fetchAllClassrooms = async () => {
+    const response = await fetch('/api/classrooms');
+    const data = await response.json();
+    setClassrooms(data);
   };
 
-  componentDidMount() {
-    this.fetchAllClassrooms();
-  }
+  useEffect(() => {
+    fetchAllClassrooms();
+  }, []);
 
-  fetchAllClassrooms = () => {
-    fetch('/api/classrooms')
-      .then(res => res.json())
-      .then(classrooms => this.setState({ classrooms }));
-  }
+  return (
+    <div className="app-wrapper">
+      <h1>Classroom Placards</h1>
+      <ClassroomContainer classrooms={classrooms} />
+    </div>
+  );
+};
 
-  fetchAllSessions = () => {
-    fetch('/api/sessions')
-      .then(res => res.json())
-      .then(sessions => this.setState({ sessions }));
-  }
-
-  render() {
-    const { classrooms, sessions } = this.state;
-
-    return (
-      <div className="app-wrapper">
-        <h1>Classroom Placards</h1>
-        <ClassroomContainer classrooms={classrooms} />
-      </div>
-    );
-  }
-}
+export default App;
