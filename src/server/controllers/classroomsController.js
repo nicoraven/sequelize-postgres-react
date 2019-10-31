@@ -41,6 +41,26 @@ const findClassroom = (req, res) => {
     });
 };
 
+const editClassroom = (req, res) => {
+  Classroom.update(
+    { name: req.body.name },
+    { returning: true, where: { id: parseInt(req.params.id) }, include: { model: Session } }
+  )
+    .then(([rowsUpdate, [data]]) => {
+      console.log('updated', rowsUpdate);
+      console.log(data);
+      if (data) {
+        res.status(200).send(data);
+      } else {
+        res.status(400).send({ message: 'no entries found!' });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({ message: 'Internal Server Error' });
+    });
+};
+
 const setSession = (req, res) => {
   Classroom.update(
     { sessionId: parseInt(req.params.sessionId) },
@@ -86,5 +106,6 @@ module.exports = {
   getClassrooms,
   findClassroom,
   setSession,
-  clearSession
+  clearSession,
+  editClassroom
 };
