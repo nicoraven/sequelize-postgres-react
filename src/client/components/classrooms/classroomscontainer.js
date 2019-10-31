@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import Classroom from './classroom';
+import Modal from '../modal/modal';
 
-import './classrooms.css';
+import './stylesheets/classrooms.css';
 
 const ClassroomsContainer = ({ classrooms }) => {
+  const [addClassroom, setAddClassroom] = useState(false);
+
   const classroomsList = classrooms.length > 0 ? (
     classrooms.map(room => <Classroom room={room} key={room.name} />)
   ) : (
@@ -17,7 +20,13 @@ const ClassroomsContainer = ({ classrooms }) => {
 
   return (
     <div className="classrooms-container">
-      <h2>Classrooms</h2>
+      <div className="header-container">
+        <h2 className="classrooms-header">Classrooms</h2>
+        <button id="add-classroom-button" type="button" title="Add new classroom" onClick={() => setAddClassroom('ClassView')} />
+        <Modal show={addClassroom} handleClose={() => setAddClassroom(false)}>
+          <p>Hello</p>
+        </Modal>
+      </div>
       <div className="list-wrapper">
         {classroomsList}
       </div>
