@@ -20,8 +20,11 @@ const App = () => {
   const updateClassroom = (updatedClassroom) => {
     const updatedClassrooms = [...classrooms];
     const id = updatedClassrooms.findIndex(classroom => classroom.id === updatedClassroom.id);
-    // console.log('updateClassroom', id);
-    updatedClassrooms[id] = updatedClassroom;
+    if (id === -1) {
+      updatedClassrooms[updatedClassrooms.length] = updatedClassroom;
+    } else {
+      updatedClassrooms[id] = updatedClassroom;
+    }
     setClassrooms(updatedClassrooms);
   };
 

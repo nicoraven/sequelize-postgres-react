@@ -11,6 +11,10 @@ router.put('/:id/clear', classrooms.clearSession);
 
 router.put('/:id/active/:sessionId', classrooms.setSession);
 
+// router.put('/:id', classrooms.editClassroom);
+
+// router.delete('/:id', classrooms.deleteClassroom);
+
 router.get('/', classrooms.getClassrooms);
 
 module.exports = router;

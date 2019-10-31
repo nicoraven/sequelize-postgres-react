@@ -42,9 +42,9 @@ const Classroom = ({ room }) => {
           {sessionDetails}
         </div>
         <div className="card-icons">
-          <div className="icon" id="icon-view" alt="view" role="button" onClick={() => setContent('ClassView')}/>
+          <div className="icon" id="icon-view" alt="view" role="button" title="View class details" onClick={() => setContent('ClassView')}/>
           <div className="icon" id="icon-set" alt="set" />
-          <div className="icon" id="icon-clear" alt="clear" role="button" onClick={() => setContent('ClearSession')}/>
+          <div className="icon" id="icon-clear" alt="clear" role="button" title="Set classroom as vacant" onClick={() => setContent('ClearSession')}/>
           <div className="icon" id="icon-settings" alt="settings" />
         </div>
         <Modal show={content} handleClose={() => setContent(false)}>

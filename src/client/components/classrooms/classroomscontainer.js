@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Classroom from './classroom';
 import Modal from '../modal/modal';
+import AddClassroom from './addClassroom';
 
 import './stylesheets/classrooms.css';
 
@@ -24,7 +25,7 @@ const ClassroomsContainer = ({ classrooms }) => {
         <h2 className="classrooms-header">Classrooms</h2>
         <button id="add-classroom-button" type="button" title="Add new classroom" onClick={() => setAddClassroom('ClassView')} />
         <Modal show={addClassroom} handleClose={() => setAddClassroom(false)}>
-          <p>Hello</p>
+          <AddClassroom handleClose={() => setAddClassroom(false)} />
         </Modal>
       </div>
       <div className="list-wrapper">
