@@ -61,6 +61,21 @@ const editClassroom = (req, res) => {
     });
 };
 
+const deleteClassroom = (req, res) => {
+  Classroom.destroy({ where: { id: parseInt(req.params.id) } })
+    .then((data) => {
+      if (data) {
+        res.status(200).send({ success: data });
+      } else {
+        res.status(400).send({ message: 'no entries found!' });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({ message: 'Internal Server Error' });
+    });
+};
+
 const setSession = (req, res) => {
   Classroom.update(
     { sessionId: parseInt(req.params.sessionId) },
@@ -107,5 +122,6 @@ module.exports = {
   findClassroom,
   setSession,
   clearSession,
-  editClassroom
+  editClassroom,
+  deleteClassroom
 };
