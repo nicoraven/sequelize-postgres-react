@@ -6,7 +6,7 @@ import ClassView from './ClassView';
 import ClearSession from './clearsession';
 import { generateTime } from '../../utils';
 import { SetContentContext } from '../../utils/context';
-import './classrooms.css';
+import './stylesheets/classrooms.css';
 
 const Classroom = ({ room }) => {
   // console.log(room);

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { requestClear } from '../../utils';
 import { ClassroomsContext, SetContentContext } from '../../utils/context';
-import './clearsession.css';
+import './stylesheets/clearsession.css';
 
 const CombinedContextConsumer = ({ children }) => (
   <ClassroomsContext.Consumer>

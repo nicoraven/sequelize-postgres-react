@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { generateTime } from '../../utils';
-import './classview.css';
+import './stylesheets/classview.css';
 
 const ClassroomDetails = ({ room }) => {
   const goFullscreen = (e) => {
