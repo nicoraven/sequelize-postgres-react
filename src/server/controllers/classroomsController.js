@@ -1,25 +1,19 @@
 const { Session, Classroom } = require('../database/models');
-const { findAll } = require('../services/classroomServices');
+const { findAll, createOne, findOne } = require('../services/classroomServices');
 
 const createClassroom = (req, res) => {
   console.log(req.body);
-  Classroom.create(req.body)
-    .then(classroom => res.status(200).send(classroom))
-    .catch((err) => {
-      console.log(err);
+  createOne(req.body)
+    .then(result => res.status(result.code).send({ message: result.data }))
+    .catch((error) => {
+      console.log('catch', error);
       res.status(500).send({ message: 'Internal Server Error' });
     });
 };
 
 const getClassrooms = (req, res) => {
   findAll()
-    .then((result) => {
-      if (result.code === undefined) {
-        res.status(200).send(result);
-      } else {
-        res.status(result.code).send({ message: result.message });
-      }
-    })
+    .then(result => res.status(result.code).send({ message: result.data }))
     .catch((error) => {
       console.log('catch', error);
       res.status(500).send({ message: 'Internal Server Error' });
@@ -27,16 +21,10 @@ const getClassrooms = (req, res) => {
 };
 
 const findClassroom = (req, res) => {
-  Classroom.findOne({ where: { id: parseInt(req.params.id) }, include: { model: Session, as: 'session' } })
-    .then((data) => {
-      if (data) {
-        res.status(200).send(data);
-      } else {
-        res.status(400).send({ message: 'no entries found!' });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
+  findOne(parseInt(req.params.id))
+    .then(result => res.status(result.code).send({ message: result.data }))
+    .catch((error) => {
+      console.log('catch', error);
       res.status(500).send({ message: 'Internal Server Error' });
     });
 };
