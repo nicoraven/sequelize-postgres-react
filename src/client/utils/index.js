@@ -12,12 +12,12 @@ const addClassroom = async (data) => {
       body: JSON.stringify(data)
     });
     const json = await response.json();
-    if (json.message) {
-      console.log('Error Response:', json.message);
-      return null;
+    if (response.status === 200) {
+      console.log('Response:', json.message);
+      return json.message;
     } else {
-      console.log('Response:', json);
-      return json;
+      console.log('Error Response:', json);
+      return null;
     }
   } catch (error) {
     console.error('Error:', error);
@@ -25,12 +25,37 @@ const addClassroom = async (data) => {
   }
 };
 
-const requestClear = async (id) => {
-  const url = `/api/classrooms/${id}/clear`;
+const editClassroom = async (data) => {
+  const url = `/api/classrooms/${data.id}/`;
 
   try {
     const response = await fetch(url, {
       method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ ...data })
+    });
+    const json = await response.json();
+    if (response.status === 200) {
+      console.log('Response:', json.message);
+      return json.message;
+    } else {
+      console.log('Error Response:', json);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+};
+
+const deleteClassroom = async (data) => {
+  const url = `/api/classrooms/${data.id}/`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       }
@@ -49,8 +74,34 @@ const requestClear = async (id) => {
   }
 };
 
+// const requestClear = async (id) => {
+//   const url = `/api/classrooms/${id}/clear`;
+
+//   try {
+//     const response = await fetch(url, {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     });
+//     const json = await response.json();
+//     if (json.message) {
+//       console.log('Error Response:', json.message);
+//       return null;
+//     } else {
+//       console.log('Response:', json);
+//       return json;
+//     }
+//   } catch (error) {
+//     console.error('Error:', error);
+//     return null;
+//   }
+// };
+
 export {
   generateTime,
-  requestClear,
-  addClassroom
+  // requestClear,
+  addClassroom,
+  editClassroom,
+  deleteClassroom
 };

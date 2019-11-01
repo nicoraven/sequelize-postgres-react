@@ -10,7 +10,7 @@ const App = () => {
   const fetchAllClassrooms = async () => {
     const response = await fetch('/api/classrooms');
     const data = await response.json();
-    setClassrooms(data);
+    setClassrooms(data.message);
   };
 
   useEffect(() => {

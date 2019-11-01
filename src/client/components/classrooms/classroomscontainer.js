@@ -14,7 +14,7 @@ const ClassroomsContainer = ({ classrooms }) => {
   ) : (
     <div className="classroom">
       <div className="classroom-content">
-        <h4>Add a classroom here.</h4>
+        <h4>Add a classroom using the + icon above!</h4>
       </div>
     </div>
   );

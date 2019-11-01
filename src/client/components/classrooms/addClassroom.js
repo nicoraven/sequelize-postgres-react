@@ -18,6 +18,7 @@ const AddClassroom = ({ handleClose }) => {
         setName('');
       } else {
         console.log('error 500!');
+        alert('Internal Server Error: Please try again later.');
       }
     } else {
       setShow(true);

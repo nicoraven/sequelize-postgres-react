@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import { requestClear } from '../../utils';
+import { editClassroom } from '../../utils';
 import { ClassroomsContext, SetContentContext } from '../../utils/context';
 import './stylesheets/clearsession.css';
 
@@ -18,7 +18,10 @@ const CombinedContextConsumer = ({ children }) => (
 
 const ClearSession = ({ room }) => {
   const clearReq = async ({ updateClassroom, setContent }) => {
-    const cleared = await requestClear(parseInt(room.id));
+    const cleared = await editClassroom({
+      id: room.id,
+      sessionId: null
+    });
     if (cleared) {
       updateClassroom(cleared);
       setContent();
