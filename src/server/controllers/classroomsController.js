@@ -1,4 +1,5 @@
 const { Session, Classroom } = require('../database/models');
+const { findAll } = require('../services/classroomServices');
 
 const createClassroom = (req, res) => {
   console.log(req.body);
@@ -11,17 +12,16 @@ const createClassroom = (req, res) => {
 };
 
 const getClassrooms = (req, res) => {
-  Classroom.findAll({ order: ['name'], include: { model: Session, as: 'session' } })
-    .then((data) => {
-      if (data.length > 0) {
-        // console.log(data);
-        res.status(200).send(data);
+  findAll()
+    .then((result) => {
+      if (result.code === undefined) {
+        res.status(200).send(result);
       } else {
-        res.status(400).send({ message: 'no entries found!' });
+        res.status(result.code).send({ message: result.message });
       }
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.log('catch', error);
       res.status(500).send({ message: 'Internal Server Error' });
     });
 };
@@ -44,12 +44,12 @@ const findClassroom = (req, res) => {
 const editClassroom = (req, res) => {
   Classroom.update(
     { name: req.body.name },
-    { returning: true, where: { id: parseInt(req.params.id) }, include: { model: Session } }
+    { returning: true, include: { model: Session, as: 'session' }, where: { id: parseInt(req.params.id) } }
   )
     .then(([rowsUpdate, [data]]) => {
       console.log('updated', rowsUpdate);
-      console.log(data);
       if (data) {
+        console.log(data.id);
         res.status(200).send(data);
       } else {
         res.status(400).send({ message: 'no entries found!' });
