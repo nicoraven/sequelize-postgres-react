@@ -2,19 +2,8 @@
 import React from 'react';
 
 import { editClassroom } from '../../utils';
-import { ClassroomsContext, SetContentContext } from '../../utils/context';
+import { CombinedContextConsumer } from '../../utils/context';
 import './stylesheets/clearsession.css';
-
-const CombinedContextConsumer = ({ children }) => (
-  <ClassroomsContext.Consumer>
-    {updateClassroom => (
-      <SetContentContext.Consumer>{setContent => (
-        children({ updateClassroom, setContent })
-      )}
-      </SetContentContext.Consumer>
-    )}
-  </ClassroomsContext.Consumer>
-);
 
 const ClearSession = ({ room }) => {
   const clearReq = async ({ updateClassroom, setContent }) => {
