@@ -5,6 +5,7 @@ import Modal from '../modal/modal';
 import ClassView from './ClassView';
 import ClearSession from './clearsession';
 import ClassroomSettings from './classroomsettings';
+import SetSession from './setsession';
 import { generateTime } from '../../utils';
 import { SetContentContext } from '../../utils/context';
 import './stylesheets/classrooms.css';
@@ -19,6 +20,7 @@ const Classroom = ({ room }) => {
         ClassView: <ClassView room={room} />,
         ClearSession: <ClearSession room={room} />,
         ClassroomSettings: <ClassroomSettings room={room} />,
+        SetSession: <SetSession room={room} />,
         null: null
       }[content]}
     </React.Fragment>
@@ -45,7 +47,7 @@ const Classroom = ({ room }) => {
         </div>
         <div className="card-icons">
           <div className="icon" id="icon-view" alt="view" role="button" title="View class details" onClick={() => setContent('ClassView')}/>
-          <div className="icon" id="icon-set" alt="set" />
+          <div className="icon" id="icon-set" alt="set" role="button" title="Set active session" onClick={() => setContent('SetSession')} />
           <div className="icon" id="icon-clear" alt="clear" role="button" title="Set classroom as vacant" onClick={() => setContent('ClearSession')}/>
           <div className="icon" id="icon-settings" alt="settings" role="button" title="Classroom settings" onClick={() => setContent('ClassroomSettings')} />
         </div>
