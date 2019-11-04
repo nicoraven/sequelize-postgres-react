@@ -13,7 +13,7 @@ const addClassroom = async (data) => {
     });
     const json = await response.json();
     if (response.status === 200) {
-      console.log('Response:', json.message);
+      // console.log('Response:', json.message);
       return json.message;
     } else {
       console.log('Error Response:', json);
@@ -38,7 +38,7 @@ const editClassroom = async (data) => {
     });
     const json = await response.json();
     if (response.status === 200) {
-      console.log('Response:', json.message);
+      // console.log('Response:', json.message);
       return json.message;
     } else {
       console.log('Error Response:', json);
@@ -50,8 +50,8 @@ const editClassroom = async (data) => {
   }
 };
 
-const deleteClassroom = async (data) => {
-  const url = `/api/classrooms/${data.id}/`;
+const deleteClassroom = async (id) => {
+  const url = `/api/classrooms/${id}/`;
 
   try {
     const response = await fetch(url, {
@@ -61,12 +61,12 @@ const deleteClassroom = async (data) => {
       }
     });
     const json = await response.json();
-    if (json.message) {
+    if (json.message === 1) {
+      // console.log('Response:', json);
+      return json;
+    } else {
       console.log('Error Response:', json.message);
       return null;
-    } else {
-      console.log('Response:', json);
-      return json;
     }
   } catch (error) {
     console.error('Error:', error);

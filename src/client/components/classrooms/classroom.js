@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Modal from '../modal/modal';
 import ClassView from './ClassView';
 import ClearSession from './clearsession';
+import ClassroomSettings from './classroomsettings';
 import { generateTime } from '../../utils';
 import { SetContentContext } from '../../utils/context';
 import './stylesheets/classrooms.css';
@@ -17,6 +18,7 @@ const Classroom = ({ room }) => {
       {{
         ClassView: <ClassView room={room} />,
         ClearSession: <ClearSession room={room} />,
+        ClassroomSettings: <ClassroomSettings room={room} />,
         null: null
       }[content]}
     </React.Fragment>
@@ -45,7 +47,7 @@ const Classroom = ({ room }) => {
           <div className="icon" id="icon-view" alt="view" role="button" title="View class details" onClick={() => setContent('ClassView')}/>
           <div className="icon" id="icon-set" alt="set" />
           <div className="icon" id="icon-clear" alt="clear" role="button" title="Set classroom as vacant" onClick={() => setContent('ClearSession')}/>
-          <div className="icon" id="icon-settings" alt="settings" />
+          <div className="icon" id="icon-settings" alt="settings" role="button" title="Classroom settings" onClick={() => setContent('ClassroomSettings')} />
         </div>
         <Modal show={content} handleClose={() => setContent(false)}>
           <SetContentContext.Provider value={() => setContent(false)}>

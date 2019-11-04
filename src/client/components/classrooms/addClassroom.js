@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { ClassroomsContext } from '../../utils/context';
+import { EditClassroomsContext } from '../../utils/context';
 import { addClassroom } from '../../utils';
 
 const AddClassroom = ({ handleClose }) => {
   const [name, setName] = useState('');
   const [show, setShow] = useState(false);
 
-  const changeHandler = e => setName(e.target.value.trim());
+  const changeHandler = e => setName(e.target.value);
 
   const submitHandler = async (updateClassroom) => {
-    if (name.length > 0) {
-      console.log('submitting!', name);
-      const newClassroom = await addClassroom({ name });
+    if (name.trim().length > 0) {
+      console.log('submitting!', name.trim());
+      const newClassroom = await addClassroom({ name: name.trim() });
       if (newClassroom) {
         console.log('completed!', newClassroom);
         updateClassroom(newClassroom);
@@ -38,7 +38,7 @@ const AddClassroom = ({ handleClose }) => {
   return (
     <div className="addclassroom-container">
       <h3>Create a new classroom</h3>
-      <ClassroomsContext.Consumer>
+      <EditClassroomsContext.Consumer>
         {updateClassroom => (
           <div className="form">
             <p className={`validation-message ${showHideClassName}`}>Please provide a name!</p>
@@ -47,7 +47,7 @@ const AddClassroom = ({ handleClose }) => {
             <button type="button" title="Cancel" onClick={() => closeHandler()}>Cancel</button>
           </div>
         )}
-      </ClassroomsContext.Consumer>
+      </EditClassroomsContext.Consumer>
     </div>
   );
 };

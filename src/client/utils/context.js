@@ -1,22 +1,30 @@
 import React, { createContext } from 'react';
 
-const ClassroomsContext = createContext();
+// path: '../../App.js';
+const DeleteClassroomContext = createContext();
 
+// path: '../../App.js';
+const EditClassroomsContext = createContext();
+
+// path: '../components/classrooms/classroom.js';
 const SetContentContext = createContext();
 
 const CombinedContextConsumer = ({ children }) => (
-  <ClassroomsContext.Consumer>
-    {updateClassroom => (
+  <EditClassroomsContext.Consumer>{updateClassroom => (
+    <DeleteClassroomContext.Consumer>{removeClassroom => (
       <SetContentContext.Consumer>{setContent => (
-        children({ updateClassroom, setContent })
+        children({ updateClassroom, setContent, removeClassroom })
       )}
       </SetContentContext.Consumer>
     )}
-  </ClassroomsContext.Consumer>
+    </DeleteClassroomContext.Consumer>
+  )}
+  </EditClassroomsContext.Consumer>
 );
 
 export {
-  ClassroomsContext,
+  DeleteClassroomContext,
+  EditClassroomsContext,
   SetContentContext,
   CombinedContextConsumer
 };
