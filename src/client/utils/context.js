@@ -16,7 +16,10 @@ const CombinedContextConsumer = ({ children }) => (
   <EditClassroomsContext.Consumer>{updateClassroom => (
     <DeleteClassroomContext.Consumer>{removeClassroom => (
       <SetContentContext.Consumer>{setContent => (
-        children({ updateClassroom, setContent, removeClassroom })
+        <GetSessionsContext.Consumer>{sessions => (
+          children({ updateClassroom, setContent, removeClassroom, sessions })
+        )}
+        </GetSessionsContext.Consumer>
       )}
       </SetContentContext.Consumer>
     )}
@@ -29,6 +32,6 @@ export {
   DeleteClassroomContext,
   EditClassroomsContext,
   SetContentContext,
-  CombinedContextConsumer,
-  GetSessionsContext
+  GetSessionsContext,
+  CombinedContextConsumer
 };

@@ -24,7 +24,6 @@
     "pg-hstore": "^2.3.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-widgets": "^4.4.11",
     "sequelize": "^5.21.1"
   },
   "devDependencies": {

@@ -74,33 +74,8 @@ const deleteClassroom = async (id) => {
   }
 };
 
-// const requestClear = async (id) => {
-//   const url = `/api/classrooms/${id}/clear`;
-
-//   try {
-//     const response = await fetch(url, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     });
-//     const json = await response.json();
-//     if (json.message) {
-//       console.log('Error Response:', json.message);
-//       return null;
-//     } else {
-//       console.log('Response:', json);
-//       return json;
-//     }
-//   } catch (error) {
-//     console.error('Error:', error);
-//     return null;
-//   }
-// };
-
 export {
   generateTime,
-  // requestClear,
   addClassroom,
   editClassroom,
   deleteClassroom
