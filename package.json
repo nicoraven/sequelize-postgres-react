@@ -14,7 +14,7 @@
     "db:seed": "node_modules/.bin/sequelize db:seed:all",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon src/server/index.js",
-    "start": "npm run build && node src/server/index.js"
+    "start": "node src/server/index.js"
   },
   "author": "nicoraven",
   "license": "ISC",
