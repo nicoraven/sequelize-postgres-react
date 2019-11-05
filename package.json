@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "experimenting with sequelize in node API and reactjs front-end",
   "main": "src/server/index.js",
+  "engines": {
+    "node": "^12.11.1"
+  },
   "scripts": {
     "build": "webpack --mode production",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
@@ -24,7 +27,8 @@
     "pg-hstore": "^2.3.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "sequelize": "^5.21.1"
+    "sequelize": "^5.21.1",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -44,7 +48,6 @@
     "file-loader": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
     "nodemon": "^1.17.3",
-    "sequelize-cli": "^5.5.1",
     "style-loader": "^0.23.0",
     "url-loader": "^1.0.1",
     "webpack": "^4.5.0",
